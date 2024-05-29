@@ -6,10 +6,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/login', function () {
-//     return view('pages.auth.auth-login');
-// });
-
-// Route::post('/register', function () {
-//     return view('pages.auth.auth-register');
-// });
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', function(){
+        return view('pages.dashboard');
+    })->name('home');
+});
