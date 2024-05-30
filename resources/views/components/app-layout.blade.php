@@ -16,6 +16,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 </head>
 
@@ -23,23 +24,23 @@
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         {{-- @include('layouts.navigation') --}}
 
-        {{-- <!-- Page Heading -->
+        <!-- Page Heading -->
         @if (isset($header))
             <header class="bg-white dark:bg-gray-800 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
-        @endif --}}
-
-        {{-- navbar --}}
-        @include('layouts.navbar')
-
-        {{-- Menu Bar --}}
-        @include('layouts.menu')
+        @endif
 
         <!-- Page Content -->
         <main>
+            {{-- navbar --}}
+            @include('layouts.navbar')
+
+            {{-- Menu Bar --}}
+            @include('layouts.menu')
+
             {{ $slot }}
         </main>
     </div>
