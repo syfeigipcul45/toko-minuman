@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSatuanRequest;
-use App\Http\Requests\UpdateSatuanRequest;
-use App\Models\Satuan;
+use App\Http\Requests\StoreProductDetailRequest;
+use App\Http\Requests\UpdateProductDetailRequest;
+use App\Models\ProductDetail;
 
-class SatuanController extends Controller
+class ProductDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
     public function index()
     {
-        $data['satuans'] = Satuan::all();
-        return view('pages.satuan.index', $data);
+        //
     }
 
     /**
@@ -23,13 +21,13 @@ class SatuanController extends Controller
      */
     public function create()
     {
-        return view('pages.satuan.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSatuanRequest $request)
+    public function store(StoreProductDetailRequest $request)
     {
         //
     }
@@ -37,7 +35,7 @@ class SatuanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Satuan $satuan)
+    public function show(ProductDetail $productDetail)
     {
         //
     }
@@ -45,23 +43,24 @@ class SatuanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Satuan $satuan)
+    public function edit(ProductDetail $productDetail)
     {
-        return view('pages.satuan.edit', compact('satuan'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSatuanRequest $request, Satuan $satuan)
+    public function update(UpdateProductDetailRequest $request, ProductDetail $productDetail)
     {
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Satuan $satuan)
+    public function destroy(ProductDetail $productDetail)
     {
+        //
     }
 }

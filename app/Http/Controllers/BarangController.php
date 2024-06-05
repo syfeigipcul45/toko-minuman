@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSatuanRequest;
-use App\Http\Requests\UpdateSatuanRequest;
-use App\Models\Satuan;
+use App\Http\Requests\StoreBarangRequest;
+use App\Http\Requests\UpdateBarangRequest;
+use App\Models\Barang;
 
-class SatuanController extends Controller
+class BarangController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
     public function index()
     {
-        $data['satuans'] = Satuan::all();
-        return view('pages.satuan.index', $data);
+        $data['barangs'] = Barang::all();
+        return view('pages.barang.index', $data);
     }
 
     /**
@@ -23,13 +22,13 @@ class SatuanController extends Controller
      */
     public function create()
     {
-        return view('pages.satuan.create');
+        return view('pages.barang.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSatuanRequest $request)
+    public function store(StoreBarangRequest $request)
     {
         //
     }
@@ -37,7 +36,7 @@ class SatuanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Satuan $satuan)
+    public function show(Barang $barang)
     {
         //
     }
@@ -45,23 +44,24 @@ class SatuanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Satuan $satuan)
+    public function edit(Barang $barang)
     {
-        return view('pages.satuan.edit', compact('satuan'));
+        return view('pages.barang.edit', compact('barang'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSatuanRequest $request, Satuan $satuan)
+    public function update(UpdateBarangRequest $request, Barang $barang)
     {
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Satuan $satuan)
+    public function destroy(Barang $barang)
     {
+        //
     }
 }
