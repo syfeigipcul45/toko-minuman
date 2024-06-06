@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Product;
 
+use App\Models\Barang;
 use App\Models\Product;
 use App\Models\ProductDetail;
 use App\Models\Satuan;
@@ -14,21 +15,20 @@ class Create extends Component
     public $tanggal_beli;
     public $nama_toko;
 
-    public $nama_barang;
+    public $barang_id;
     public $quantity;
     public $satuan_id;
     public $harga_product;
-    public $harga_jual;
-    public $harga_botol;
 
     public $satuans;
+    public $barangs;
     public Collection $inputs;
     public $i = 1;
 
     public function mount ()
     {
         $this->inputs = collect();
-        dd($this->harga_botol = $this->jumlahSatuan($this->satuan_id));
+        // dd($this->harga_botol = $this->jumlahSatuan($this->satuan_id));
     }
 
     public function render()
@@ -45,11 +45,10 @@ class Create extends Component
     public function addInputs()
     {
         $this->inputs->push([
-            'nama_barang' => null,
+            'barang_id' => null,
             'quantity' => null,
             'satuan_id' => null,
             'harga_product' => null,
-            'harga_jual' => null,
         ]);
         // $i = $i + 1;
         // $this->i = $i;
@@ -64,16 +63,22 @@ class Create extends Component
 
     private function resetInputFields()
     {
-        $this->nama_barang = '';
+        $this->barang_id = '';
         $this->quantity = '';
         $this->satuan_id = '';
         $this->harga_product = '';
-        $this->harga_jual = '';
     }
 
-    public function updated()
+    public function namaBarang($barangID)
     {
+        $nama_barang = Barang::find($barangID);
+        return $nama_barang;
+    }
 
+    public function satuan($satuanID)
+    {
+        $satuan = Satuan::find($satuanID);
+        return $satuan;
     }
 
     public function create()
@@ -88,12 +93,12 @@ class Create extends Component
         // dd($this->inputs);
         foreach ($this->inputs as $input) {
             ProductDetail::create([
-                'nama_barang'   => $input['nama_barang'],
+                'barang_id'   => $input['barang_id'],
                 'product_id'    => ($this->id + 1),
                 'quantity'      => $input['quantity'],
                 'satuan_id'     => $input['satuan_id'],
                 'harga_product' => $input['harga_product'],
-                'harga_jual'    => $input['harga_jual'],
+                'keuntungan'    => (($input['quantity'] * $this->satuan($input['satuan_id'])->jumlah) * $this->namaBarang($input['barang_id'])->harga_jual) - $input['harga_product'],
                 'is_status'     => 0,
             ]);
         }

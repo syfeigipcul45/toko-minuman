@@ -8,6 +8,7 @@ use Livewire\Component;
 class Create extends Component
 {
     public $nama_barang;
+    public $harga_jual;
 
     public function render()
     {
@@ -18,6 +19,7 @@ class Create extends Component
     {
         Barang::create([
             'nama_barang' => $this->nama_barang,
+            'harga_jual'  => $this->harga_jual,
         ]);
 
         session()->flash('success', 'Data berhasil ditambah');

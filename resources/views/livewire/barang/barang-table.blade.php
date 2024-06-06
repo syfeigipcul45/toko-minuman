@@ -18,6 +18,9 @@
                             Nama Barang
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Harga Barang
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Action
                         </th>
                     </tr>
@@ -29,6 +32,10 @@
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $barang->nama_barang }}
+                            </th>
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ number_format($barang->harga_jual) }}
                             </th>
                             <td class="px-6 py-4">
                                 {{-- <div class="flex justify-center m-5"> --}}

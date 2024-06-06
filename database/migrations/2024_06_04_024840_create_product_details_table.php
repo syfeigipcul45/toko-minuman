@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('satuan_id');
             $table->foreign('satuan_id')->references('id')->on('satuans');
             $table->integer('harga_product');
+            $table->integer('keuntungan')->nullable();
             $table->integer('is_status');
             $table->timestamps();
         });

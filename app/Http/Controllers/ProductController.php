@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Barang;
 use App\Models\Product;
+use App\Models\ProductDetail;
 use App\Models\Satuan;
 
 class ProductController extends Controller
@@ -24,6 +26,7 @@ class ProductController extends Controller
     public function create()
     {
         $data['satuans'] = Satuan::all();
+        $data['barangs'] = Barang::all();
         return view('pages.product.create', $data);
     }
 
@@ -40,7 +43,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $barangs = Barang::all();
+        $satuans = Satuan::all();
+        $details = ProductDetail::where('product_id', $product->id)->get();
+        return view('pages.product.show', compact('product', 'details', 'barangs', 'satuans'));
     }
 
     /**
@@ -48,7 +54,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('pages.product.edit', compact('product'));
+        $barangs = Barang::all();
+        $satuans = Satuan::all();
+        $details = ProductDetail::where('product_id', $product->id)->get();
+        return view('pages.product.edit', compact('product', 'details', 'barangs', 'satuans'));
     }
 
     /**

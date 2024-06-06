@@ -17,8 +17,8 @@ class BarangTable extends Component
 
     public function fetchBarangs()
     {
-        $satuans = Barang::all();
-        return $satuans;
+        $barangs = Barang::all();
+        return $barangs;
     }
 
     public function changeDelete($barangID)

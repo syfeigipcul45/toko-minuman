@@ -11,11 +11,27 @@ class ProductDetail extends Model
 
     protected $fillable = [
         'product_id',
-        'nama_barang',
+        'barang_id',
         'quantity',
         'satuan_id',
         'harga_product',
         'harga_jual',
+        'keuntungan',
         'is_status'
     ];
+
+    public function productsCreated()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function barangsCreated()
+    {
+        return $this->belongsTo(Barang::class, 'barang_id');
+    }
+
+    public function satuansCreated()
+    {
+        return $this->belongsTo(Satuan::class, 'satuan_id');
+    }
 }

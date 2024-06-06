@@ -13,6 +13,5 @@ class Product extends Model
         'id',
         'tanggal_beli',
         'nama_toko',
-        'jumlah'
     ];
 }

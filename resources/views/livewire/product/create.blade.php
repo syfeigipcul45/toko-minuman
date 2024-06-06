@@ -32,12 +32,6 @@
                             Harga Product
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Harga/botol
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Harga Jual
-                        </th>
-                        <th scope="col" class="px-6 py-3">
 
                         </th>
                     </tr>
@@ -95,9 +89,14 @@
                                 {{ $i++ }}
                             </th>
                             <td class="px-6 py-4">
-                                <input type="text" id="small-input" name="nama_barang"
-                                    wire:model="inputs.{{ $index }}.nama_barang"
-                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <select id="barang_id" name="barang_id"
+                                    wire:model="inputs.{{ $index }}.barang_id"
+                                    class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected disabled>:: Pilih Barang ::</option>
+                                    @foreach ($barangs as $barang)
+                                        <option value="{{ $barang->id }}">{{ $barang->nama_barang }}</option>
+                                    @endforeach
+                                </select>
                             </td>
                             <td class="px-6 py-4">
                                 <input type="number" id="small-input" min="0" name="quantity"
@@ -106,7 +105,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <select id="satuan_id" name="satuan_id"
-                                    wire:model="inputs.{{ $index }}.satuan_id" 
+                                    wire:model="inputs.{{ $index }}.satuan_id"
                                     class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected disabled>:: Pilih Satuan ::</option>
                                     @foreach ($satuans as $satuan)
@@ -117,16 +116,6 @@
                             <td class="px-6 py-4">
                                 <input type="number" id="small-input" min="0" name="harga_product"
                                     wire:model="inputs.{{ $index }}.harga_product"
-                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            </td>
-                            <td class="px-6 py-4">
-                                <input type="number" id="small-input" min="0" name="harga_botol" disabled
-                                    wire:model="inputs.{{ $index }}.harga_botol"
-                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            </td>
-                            <td class="px-6 py-4">
-                                <input type="number" id="small-input" min="0" name="harga_jual"
-                                    wire:model="inputs.{{ $index }}.harga_jual"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </td>
                             <td class="px-6 py-4">

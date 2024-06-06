@@ -16,6 +16,18 @@ class ProductTable extends Component
         return view('livewire.product.product-table');
     }
 
+    public function countProduct($productID)
+    {
+        $count = ProductDetail::where('product_id', $productID)->get()->count();
+        return $count;
+    }
+
+    public function sumJumlah($productID)
+    {
+        $sum = ProductDetail::where('product_id', $productID)->sum('harga_product');
+        return $sum;
+    }
+
     public function fetchProducts()
     {
         $products = Product::orderby('tanggal_beli', 'desc')->get();

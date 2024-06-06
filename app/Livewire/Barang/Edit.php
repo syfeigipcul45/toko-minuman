@@ -9,6 +9,7 @@ class Edit extends Component
 {
     public $barangID;
     public $nama_barang;
+    public $harga_jual;
     public function render()
     {
         return view('livewire.barang.edit');
@@ -19,6 +20,7 @@ class Edit extends Component
         $barang = Barang::find($id);
         $this->barangID = $barang->id;
         $this->nama_barang = $barang->nama_barang;
+        $this->harga_jual = $barang->harga_jual;
     }
 
     public function update()
@@ -27,6 +29,7 @@ class Edit extends Component
 
         $barang->update([
             'nama_barang' => $this->nama_barang,
+            'harga_jual'  => $this->harga_jual,
         ]);
 
         session()->flash('success', 'Data berhasil diupdate');

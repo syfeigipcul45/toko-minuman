@@ -3,10 +3,10 @@
     <div>
         {{-- <div class="relative">
             <div class="inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none"> --}}
-                <a href="{{ route('product.create') }}"
-                    class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i
-                        class="fas fa-add"></i> Tambah</a>
-            {{-- </div>
+        <a href="{{ route('product.create') }}"
+            class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i
+                class="fas fa-add"></i> Tambah</a>
+        {{-- </div>
         </div> --}}
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -21,7 +21,7 @@
                             Nama Toko
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Jumlah
+                            Jumlah (Rp)
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Jumlah Barang
@@ -43,13 +43,16 @@
                                 {{ $product->nama_toko }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->jumlah }}
+                                {{ number_format($this->sumJumlah($product->id)) }}
                             </td>
                             <td class="px-6 py-4">
-                                5
+                                {{ $this->countProduct($product->id) }}
                             </td>
                             <td class="px-6 py-4">
                                 {{-- <div class="flex justify-center m-5"> --}}
+                                <a href="{{ route('product.show', $product->id) }}"
+                                    class="px-3 py-2 text-xs font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><i
+                                        class="fas fa-eye"></i> Show</a>
                                 <a href="{{ route('product.edit', $product->id) }}"
                                     class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i
                                         class="fas fa-edit"></i> Edit</a>
