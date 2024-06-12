@@ -65,7 +65,18 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        foreach ($request->is_status as $key => $status) {
+            $is_status = ProductDetail::find($request->detail_id[$key]);
+            dd($request->is_status[$key]);
+            if ($request->is_status[$key] == 1) {
+                $is_status->update([
+                    'is_status'   => $request->is_status[$key],
+                ]);
+            }
+        }
+
+        session()->flash('success', 'Data berhasil diupdate');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -74,5 +85,13 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function editProductDetail($id)
+    {
+        $barangs = Barang::all();
+        $satuans = Satuan::all();
+        $detail = ProductDetail::find($id);
+        return view('pages.product.product-detail', compact('detail', 'barangs', 'satuans'));
     }
 }

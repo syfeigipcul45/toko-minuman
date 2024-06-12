@@ -22,6 +22,12 @@ class ProductTable extends Component
         return $count;
     }
 
+    public function countSisa($productID)
+    {
+        $sisa = ProductDetail::where('product_id', $productID)->where('is_status', 0)->get()->count();
+        return $sisa;
+    }
+
     public function sumJumlah($productID)
     {
         $sum = ProductDetail::where('product_id', $productID)->sum('harga_product');

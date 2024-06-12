@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KeuntunganController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\SatuanController;
+use App\Models\Keuntungan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,4 +21,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('product', ProductController::class);
     Route::resource('product-detail', ProductDetailController::class);
     Route::resource('barang', BarangController::class);
+    Route::resource('keuntungan', KeuntunganController::class);
+    Route::get('product/{id}/product-detail', [ProductController::class, 'editProductDetail'])->name('product.edit.product-detail');
 });
