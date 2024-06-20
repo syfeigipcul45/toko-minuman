@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Product;
 
+use App\Models\Barang;
 use App\Models\Product;
 use App\Models\ProductDetail as ModelsProductDetail;
+use App\Models\Satuan;
 use Livewire\Component;
 
 class ProductDetail extends Component
@@ -35,6 +37,18 @@ class ProductDetail extends Component
         $this->is_status = $detail->is_status;
     }
 
+    public function namaBarang($barangID)
+    {
+        $nama_barang = Barang::find($barangID);
+        return $nama_barang;
+    }
+
+    public function satuan($satuanID)
+    {
+        $satuan = Satuan::find($satuanID);
+        return $satuan;
+    }
+
     public function update()
     {
         $productDetail = ModelsProductDetail::find($this->productDetailID);
@@ -45,7 +59,8 @@ class ProductDetail extends Component
             'quantity'  => $this->quantity,
             'satuan_id' => $this->satuan_id,
             'harga_product' => $this->harga_product,
-            'is_status' => $this->is_status
+            'is_status' => $this->is_status,
+            'keuntungan'    => (($this->quantity * $this->satuan($this->satuan_id)->jumlah) * $this->namaBarang($this->barang_id)->harga_jual) - $this->harga_product,
         ]);
 
         session()->flash('success', 'Data berhasil diupdate');
