@@ -18,6 +18,9 @@
     <link href="https://cdn.datatables.net/2.0.8/css/dataTables.tailwindcss.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
@@ -25,6 +28,14 @@
     @livewireStyles
 
 </head>
+<style>
+    .active {
+        /* Add your active styles here */
+        font-weight: bold;
+        /* color: blue; */
+        /* Example active color */
+    }
+</style>
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -61,4 +72,10 @@
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+<script>
+    window.addEventListener('delete', event => {
+        toastr.success('Data Berhasil Dihapus');
+    });
+</script>
+
 </html>

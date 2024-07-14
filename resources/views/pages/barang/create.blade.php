@@ -1,5 +1,5 @@
 <x-app-layout>
     @section('title', 'Tambah Barang')
     @include('layouts.alert')
-    @livewire('keuntungan.create')
+    @livewire('barang.create')
 </x-app-layout>

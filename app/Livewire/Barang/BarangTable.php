@@ -9,6 +9,7 @@ class BarangTable extends Component
 {
     public $barangs;
     public $selectBarangsId = 0;
+    public $barangIdBeingRemoved = null;
 
     public function render()
     {
@@ -26,6 +27,13 @@ class BarangTable extends Component
         $this->selectBarangsId = $barangID;
     }
 
+    public function confirmBarangRemoval($barangId)
+    {
+        $this->barangIdBeingRemoved = $barangId;
+
+        $this->dispatch('show-delete-modal');
+    }
+
     public function deleteBarang()
     {
         if ($this->selectBarangsId == 0) {
@@ -34,7 +42,7 @@ class BarangTable extends Component
         $barang = Barang::findOrFail($this->selectBarangsId);
         $barang->delete();
         $this->barangs = $this->fetchBarangs();
-        session()->flash('success', 'Data has been saved successfully!');
         $this->selectBarangsId = 0;
+        $this->dispatch('delete');
     }
 }

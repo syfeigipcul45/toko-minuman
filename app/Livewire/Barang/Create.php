@@ -22,6 +22,7 @@ class Create extends Component
             'harga_jual'  => $this->harga_jual,
         ]);
 
+        // $this->dispatch('success', ['message' => 'Data berhasil ditambah']);
         session()->flash('success', 'Data berhasil ditambah');
         return redirect()->route('barang.index');
     }
