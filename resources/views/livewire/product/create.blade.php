@@ -92,7 +92,7 @@
                                 <select id="barang_id" name="barang_id"
                                     wire:model="inputs.{{ $index }}.barang_id"
                                     class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected disabled>:: Pilih Barang ::</option>
+                                    <option selected>:: Pilih Barang ::</option>
                                     @foreach ($barangs as $barang)
                                         <option value="{{ $barang->id }}">{{ $barang->nama_barang }}</option>
                                     @endforeach
@@ -107,7 +107,7 @@
                                 <select id="satuan_id" name="satuan_id"
                                     wire:model="inputs.{{ $index }}.satuan_id"
                                     class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected disabled>:: Pilih Satuan ::</option>
+                                    <option selected>:: Pilih Satuan ::</option>
                                     @foreach ($satuans as $satuan)
                                         <option value="{{ $satuan->id }}">{{ $satuan->name }} - {{ $satuan->jumlah }}</option>
                                     @endforeach
