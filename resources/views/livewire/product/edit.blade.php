@@ -97,44 +97,19 @@
                                 wire:model="details.{{ $index }}.id" value="{{ $detail->id }}">
                         </th>
                         <td class="px-6 py-4">
-                            <select id="barang_id" name="barang_id" disabled
-                                wire:model="details.{{ $index }}.barang_id"
-                                class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected disabled>:: Pilih Barang ::</option>
-                                @foreach ($barangs as $barang)
-                                    <option value="{{ $barang->id }}"
-                                        @if ($detail->barang_id == $barang->id) selected @endif>{{ $barang->nama_barang }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            {{ $this->namaBarang($detail->barang_id)->nama_barang }}
                         </td>
                         <td class="px-6 py-4">
-                            <input type="number" id="small-input" min="0" name="quantity" disabled
-                                wire:model="details.{{ $index }}.quantity" value="{{ $detail->quantity }}"
-                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            {{ $detail->quantity }}
                         </td>
                         <td class="px-6 py-4">
-                            <select id="satuan_id" name="satuan_id" disabled
-                                wire:model="details.{{ $index }}.satuan_id"
-                                class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected disabled>:: Pilih Satuan ::</option>
-                                @foreach ($satuans as $satuan)
-                                    <option value="{{ $satuan->id }}"
-                                        @if ($detail->satuan_id == $satuan->id) selected @endif>{{ $satuan->name }} -
-                                        {{ $satuan->jumlah }}</option>
-                                @endforeach
-                            </select>
+                            {{ $this->satuan($detail->satuan_id)->name }}
                         </td>
                         <td class="px-6 py-4">
-                            <input type="number" id="small-input" min="0" name="harga_product" disabled
-                                wire:model="details.{{ $index }}.harga_product"
-                                value="{{ $detail->harga_product }}"
-                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            {{ number_format($detail->harga_product) }}
                         </td>
                         <td class="px-6 py-4">
-                            <input type="number" id="small-input" min="0" name="keuntungan" disabled
-                                wire:model="details.{{ $index }}.keuntungan" value="{{ $detail->keuntungan }}"
-                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            {{ number_format($detail->keuntungan) }}
                         </td>
                         <td class="px-6 py-4">
                             @if ($this->checkStatus($detail->id) != 0)
