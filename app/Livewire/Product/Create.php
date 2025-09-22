@@ -83,7 +83,7 @@ class Create extends Component
 
     public function create()
     {
-        $this->id = Product::get()->count();
+        $this->id = Product::get()->max('id') ?? 0;
         Product::create([
             'id' => ($this->id + 1),
             'tanggal_beli' => $this->tanggal_beli,
